@@ -36,7 +36,7 @@ const THEMES = {
 
 const DEFAULTS = {
   template: 'confetti', font: 'Comfortaa', guestName: 'Александр', salutation: 'm',
-  heading: 'На день рождения!', message: 'Приходи разделить со мной этот чудесный день!',
+  message: 'Приходи разделить со мной этот чудесный день!',
   dateText: '21 ноября 2026', timeText: '17:00',
   locationText: 'Кафе «Счастье», ул. Цветочная, 12', signature: 'До скорой встречи!'
 };
@@ -289,9 +289,8 @@ function wrapText(input, maxWidth) {
 function layoutContent(v, scale) {
   const availableWidth = 778;
   const blocks = [
-    {type: 'text', text:'ПРИГЛАШЕНИЕ', size:28, weight:700, color:'secondary', gap:27, letterSpacing:2},
+    {type: 'text', text:'ПРИГЛАШЕНИЕ НА ЮБИЛЕЙ', size:28, weight:700, color:'secondary', gap:27, letterSpacing:2},
     {type: 'text', text:buildGreeting(v), size:61, weight:700, color:'ink', gap:27},
-    {type: 'text', text:safeText(v.heading), size:55, weight:700, color:'accent', gap:23},
     {type: 'text', text:safeText(v.message), size:36, weight:400, color:'ink', gap:24},
     {type: 'divider', gap:24},
     {type: 'text', text:safeText(v.dateText), size:48, weight:700, color:'ink', gap:12},
@@ -438,7 +437,7 @@ if (navigator.share && navigator.canShare && typeof File !== 'undefined') {
       try {
         const blob = await getBlob();
         const file = new File([blob], filename(), {type:'image/png'});
-        await navigator.share({files:[file], title:'Приглашение на день рождения'});
+        await navigator.share({files:[file], title:'Приглашение на юбилей'});
         showStatus('Открытка готова к отправке!');
       } catch (error) {
         if (error?.name !== 'AbortError') {console.error(error);showStatus('Не получилось поделиться. Скачайте PNG.', true);}
